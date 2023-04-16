@@ -5,6 +5,7 @@ sign=null
 vk_user_id=null
 vk_ts=null
 vk_ref=null
+user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36"
 
 function authenticate() {
 	# 1 - sign: (string): <sign>
@@ -27,7 +28,7 @@ function authenticate() {
 function get_profile() {
 	curl --request GET \
 		--url "$api/profile" \
-		--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36" \
+		--user-agent "$user_agent" \
 		--header "content-type: application/json" \
 		--header "xvk: $params"
 }
@@ -37,7 +38,7 @@ function get_dreams() {
 	# 2 - offset: (integer): <offset - default: 0>
 	curl --request GET \
 		--url "$api/getList?type=${1:-new}&offset=${2:-0}" \
-		--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36" \
+		--user-agent "$user_agent" \
 		--header "content-type: application/json" \
 		--header "xvk: $params"
 }
@@ -47,7 +48,7 @@ function like_dream() {
 	# 2 - dream_id: (integer): <dream_id>
 	curl --request POST \
 		--url "$api/like?type=$1" \
-		--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36" \
+		--user-agent "$user_agent" \
 		--header "content-type: application/json" \
 		--header "xvk: $params" \
 		--data '{
@@ -61,7 +62,7 @@ function report_dream() {
 	# 2 - text: (string): <text - default: "">
 	curl --request POST \
 		--url "$api/report" \
-		--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36" \
+		--user-agent "$user_agent" \
 		--header "content-type: application/json" \
 		--header "xvk: $params" \
 		--data '{
@@ -75,7 +76,7 @@ function create_dream() {
 	# 2 - is_anon: (boolean): <true, false - default: false>
 	curl --request POST \
 		--url "$api/create" \
-		--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36" \
+		--user-agent "$user_agent" \
 		--header "content-type: application/json" \
 		--header "xvk: $params" \
 		--data '{
@@ -88,7 +89,7 @@ function delete_dream() {
 	# 1 - dream_id: (integer): <dream_id>
 	curl --request POST \
 		--url "$api/delete" \
-		--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36" \
+		--user-agent "$user_agent" \
 		--header "content-type: application/json" \
 		--header "xvk: $params" \
 		--data '{
